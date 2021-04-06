@@ -1,4 +1,7 @@
-# esg-dashboard
+# Dashboard using solace
+
+VueJS component to consume solace Topics from PubSub+
+Contact [author](@mailto:pierre@kepi.site)
 
 ## Project setup
 ```
