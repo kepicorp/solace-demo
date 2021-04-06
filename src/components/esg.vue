@@ -61,6 +61,7 @@
 import solace from 'solclientjs';
 import { data } from '../data.js'
 import TopicSubscriber from '../services/TopicSubscriber'
+require('dotenv').config();
 
 var factoryProps = new solace.SolclientFactoryProperties();
 factoryProps.profile = solace.SolclientFactoryProfiles.version10;
@@ -78,7 +79,8 @@ export default {
       connectStatus: "Not connected",
       subscriber: {},
       rating: "AA",
-      topic: ""
+      topic: "",
+      environment: process.env
     }
   },
   computed: {
@@ -94,7 +96,8 @@ export default {
   },
   async created() {
       // create the subscriber, specifying the name of the subscription topic
-      this.subscriber = new TopicSubscriber(solace, 'sri/data/>', (string) => {
+      
+      this.subscriber = new TopicSubscriber(process.env.VUE_APP_URL, process.env.VUE_APP_VPN, process.env.VUE_APP_USERNAME, process.env.VUE_APP_PASSWORD, solace, 'sri/data/>', (string) => {
         this.connectStatus = string;
       },
       (message, topic) => {

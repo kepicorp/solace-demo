@@ -4,6 +4,15 @@ VueJS component to consume solace Topics from PubSub+
 Contact [author](@mailto:pierre@kepi.site)
 
 ## Project setup
+
+Set env variable to connect with Solace on your ```.env.local``` or ```.env``` file
+```js
+VUE_APP_URL="wss://myurl"
+VUE_APP_VPN="myvpn"
+VUE_APP_USERNAME="solace-cloud-client"
+VUE_APP_PASSWORD="mypassword" 
+```
+
 ```
 npm install
 ```

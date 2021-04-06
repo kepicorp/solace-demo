@@ -1,4 +1,5 @@
-export default function (solaceModule, topicName, status, action) {
+
+export default function (url,vpnname,user,password,solaceModule, topicName, status, action) {
     'use strict';
     var solace = solaceModule;
     var subscriber = {};
@@ -30,14 +31,14 @@ export default function (solaceModule, topicName, status, action) {
             return;
         }
         // extract params
-        var hosturl = "wss://mrw7apqw9wx82.messaging.solace.cloud:443";
+        var hosturl = url;
         subscriber.log('Connecting to Solace message router using url: ' + hosturl);
-        var usernamevpn = "sridemo";
-        var username = "solace-cloud-client";
+        var usernamevpn = vpnname;
+        var username = user;
         subscriber.log('Client username: ' + username);
         var vpn = usernamevpn;
         subscriber.log('Solace message router VPN name: ' + vpn);
-        var pass = "6uqegjhappscg4rpfi1m30ugju";
+        var pass = password;
         // create session
         try {
             subscriber.session = solace.SolclientFactory.createSession({
